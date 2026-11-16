@@ -1,0 +1,17 @@
+%YAML 1.2
+---
+name: C++ (with GLSL)
+scope: source.c++.glsl
+file_extensions: [cpp, hpp, cc, h]
+extends: Packages/C++/C++.sublime-syntax
+
+contexts:
+  raw-strings:
+    - meta_prepend: true
+    - match: 'R"(glsl|GLSL)\('
+      scope: punctuation.definition.string.begin.c++
+      embed: scope:source.glsl
+      embed_scope: meta.string.glsl.embedded.c++
+      escape: '\)\1"'
+      escape_captures:
+        0: punctuation.definition.string.end.c++
